@@ -5,7 +5,7 @@ import TodayTiming from '../Components/TodayTiming'
 import service from '../services/service'
 import { getTodayDate } from '../utils/Utility'
 import Todo from '../Components/Todo/Todo'
-
+    
 import {MyContext} from "../context/context"
 
 const Home = () => {
@@ -17,6 +17,7 @@ const Home = () => {
     useEffect(() => {
         const getData = async () => {
             const Timings = await service.getTodayData(user.id,getTodayDate())
+            console.log(Timings);
             if(Timings.length > 0){
                 setTotalTime({...Timings[0]})
             } 
@@ -33,7 +34,7 @@ const Home = () => {
             <section className="py-3 bg-light container-fluid">
                 <div className="row ">
                     <div className="col-12 col-md-4">
-                        <AddInOut totalTime={totalTime} setData={setTotalTime} />
+                        <AddInOut totalTime={totalTime} setTotalTime={setTotalTime} />
                     </div>
                     <div className="col-12 col-md-8">
                         <TodayTiming totalTime={totalTime} setTotalTime={setTotalTime} />

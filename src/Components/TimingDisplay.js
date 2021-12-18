@@ -30,7 +30,7 @@ const TimingDisplay = ({totalTime, setTotalTime}) => {
                 const startTime = item.InTime
                 const endTime = item.OutTime
 
-                if(endTime !== null && endTime !== ""){
+                if(endTime && endTime !== null && endTime !== ""){
                     TempInTime = addTime(TempInTime,subtractTime(startTime, endTime))
                 }
             });

@@ -79,7 +79,7 @@ const AddInOut = ({totalTime, setTotalTime}) => {
             }
         } else {
             const body = {
-                user : "1", 
+                user : "61bdb7f135c6730016bd378a",
                 Date : getTodayDate(),
                 Day : dayOfWeek[new Date().getUTCDay()] ,
                 Timings : [{
@@ -87,7 +87,7 @@ const AddInOut = ({totalTime, setTotalTime}) => {
                     WorkDescription : formData.WorkDescription
                 }]
             }
-
+            console.log(body);
             var newData = await services.addNewData(body)
             if(newData) {
                 setTotalTime(newData)

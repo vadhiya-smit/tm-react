@@ -1,6 +1,8 @@
 import axios from "axios"
 
-const  BASR_URL = "http://localhost:1338"
+//const  BASR_URL = "http://localhost:1338"
+const  BASR_URL = "https://time-work-strapi.herokuapp.com"
+
 class services {
     static async getUserData(id){
         try {

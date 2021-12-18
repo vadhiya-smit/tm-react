@@ -1,10 +1,12 @@
 import axios from "axios"
 
-const  BASR_URL = "http://localhost:1338"
+//const  BASR_URL = "http://localhost:1338"
+const  BASR_URL = "https://time-work-strapi.herokuapp.com"
 class services {
     static async getTodayData(id,date){
         try {
             const res = await axios.get(`${BASR_URL}/working-times?user.id=${id}&Date=${date}`)
+            console.log(`${BASR_URL}/working-times?user.id=${id}&Date=${date}`);
             return await res.data
         } catch(error){
             console.log(error);

@@ -9,10 +9,11 @@ const ContextApis = ({children}) => {
         const  getData = async () => {
             var id = localStorage.getItem("userId")
             if(!id) {
-                localStorage.setItem("userId","1")
-                id = 1
+                localStorage.setItem("userId","61bdb7f135c6730016bd378a")
+                id = "61bdb7f135c6730016bd378a"
             }
             const res = await Users.getUserData(id)
+            console.log(res);
             setUser(res)
             setIsLoading(false)
         }
@@ -23,8 +24,7 @@ const ContextApis = ({children}) => {
         <MyContext.Provider value={{user, setUser}} >
             {isLoading ? <div className="text-center">
                 <img src="/LoadingClock.gif" alt="Loading..." />
-            </div>  : <>{children}</>      }
-                  
+            </div>  : <>{children}</>}
         </MyContext.Provider>
     )
 }

@@ -39,7 +39,7 @@ const TodayTiming = ({totalTime,setTotalTime}) => {
         }
         
 
-        
+            
     }
     
     const handleDeleteClick = async (id) => {
@@ -71,11 +71,11 @@ const TodayTiming = ({totalTime,setTotalTime}) => {
                             <td>{item.OutTime && item.OutTime.slice(0,5)}</td>
                             <td>{item.WorkDescription}</td>
                             <td>{item.BreakDescription}</td>
-                            <td className="cursor-pointer d-flex justify-content-around"   data-bs-toggle="modal" data-bs-target="#editTime">
-                                <span className="mx-1">
+                            <td className="cursor-pointer d-flex justify-content-around"   >
+                                <span className="mx-1" data-bs-toggle="modal" data-bs-target="#editTime">
                                     <i className="fa fa-edit" onClick={() => handleEditClick(item.id)}></i>
                                 </span>
-                                <span className="mx-1">
+                                <span className="mx-1 border" >
                                     <i className="fa fa-trash" onClick={() => handleDeleteClick(item.id)}></i>
                                 </span>
                             </td>

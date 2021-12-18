@@ -11,7 +11,7 @@ const Clock = () => {
     }, [])
 
     return (
-        <div className="fixed-watch bg-info ">
+        <div className="fixed-watch bg-dark text-white">
             <span>
 
                 <i className="fas fa-calendar-week"></i> {getTodayDate()}

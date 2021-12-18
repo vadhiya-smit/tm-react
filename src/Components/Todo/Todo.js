@@ -54,11 +54,11 @@ const Todo = () => {
     }
     const handleDelete = (id) => {
 
-    }
+    }       
 
     useEffect(() => {
         const getAllTodoLists = async () => {
-            const res = await fetch("http://localhost:1338/todo-lists");
+            const res = await fetch("https://time-work-strapi.herokuapp.com/todo-lists");
             const data = await res.json();
             setAllTodoList(data)
         }
