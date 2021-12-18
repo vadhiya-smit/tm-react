@@ -40,7 +40,7 @@ const TimingDisplay = ({totalTime, setTotalTime}) => {
             clearInterval(inInterval)
             clearInterval(outInterval)
 
-            if(lastNode.OutTime !== null && lastNode.OutTime !== ""){
+            if(lastNode.OutTime !== null && lastNode.OutTime !== "" && lastNode.OutTime) {
                 setTotalIn(val => TempInTime)
                 setTotalOut(val => subtractTime(TempInTime,subtractTime(firstInTime,new Date().toString().split(" ")[4])))
                 setOutInterval(setInterval(() => setTotalOut(val => subtractTime(TempInTime,subtractTime(firstInTime,new Date().toString().split(" ")[4]))),1000))

@@ -21,7 +21,9 @@ const AddInOut = ({totalTime, setTotalTime}) => {
         if(Object.keys(totalTime).length !== 0 && totalTime.Timings.length > 0){
             const myData = totalTime.Timings
             var lastnode = myData[myData.length-1]
-            if(!(lastnode.OutTime === null) && !(lastnode.OutTime === "")){
+            console.log(lastnode);
+            console.log(!lastnode.OutTime);
+            if(!(lastnode.OutTime === null) && !(lastnode.OutTime === "") && lastnode.OutTime){
                 setIsOutTimeNull(false)
                 setFormData({...initialForm})
             } else {
@@ -56,7 +58,7 @@ const AddInOut = ({totalTime, setTotalTime}) => {
 
             if(isValid){
                 if(isOutTimeNull) {
-                    const tempData = totalTime.Timings.find(item => item.OutTime === null || item.OutTime === "")
+                    const tempData = totalTime.Timings.find(item => item.OutTime === null || item.OutTime === "" || !item.OutTime)
                     tempData.OutTime = formData.OutTime
                     tempData.BreakDescription = formData.BreakDescription
                     tempData.WorkDescription = formData.WorkDescription
