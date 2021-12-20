@@ -81,7 +81,7 @@ const AddInOut = ({totalTime, setTotalTime}) => {
             }
         } else {
             const body = {
-                user : "61bdb7f135c6730016bd378a",
+                user : localStorage.getItem("userId"),
                 Date : getTodayDate(),
                 Day : dayOfWeek[new Date().getUTCDay()] ,
                 Timings : [{
