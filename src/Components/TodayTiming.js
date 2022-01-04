@@ -40,7 +40,7 @@ const TodayTiming = ({totalTime,setTotalTime}) => {
         
 
             
-    }
+    }   
     
     const handleDeleteClick = async (id) => {
         if(window.confirm("delete entry?")){
@@ -49,7 +49,7 @@ const TodayTiming = ({totalTime,setTotalTime}) => {
             if(res){
                 setTotalTime(res)
             }
-        }
+        }   
     }
 
     return (

@@ -6,6 +6,7 @@ import Home from '../../Pages/Home';
 import NotFound from '../../Pages/404';
 import Profile from '../../Pages/Profile';
 import Utils from '../../Pages/Utils';
+import Login from '../../Pages/Login';
 
 const pages = () => {
     return (
@@ -15,6 +16,7 @@ const pages = () => {
                 <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/util" element={<Utils />}/>
                 <Route path="/profile" element={<Profile />}/>
+                <Route path="/login" element={<Login />}/>
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </div>

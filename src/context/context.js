@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Users from '../services/Users';
-const MyContext = React.createContext();
+const MyContext = React.createContext();    
 
 const ContextApis = ({children}) => {
     const [user, setUser] = useState({})
