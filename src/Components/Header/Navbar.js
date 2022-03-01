@@ -13,13 +13,13 @@ const Navbar = () => {
                 <div className="container-fluid  px-5">
                     <div className="navbar-brand text-decoration-none">
                         <Link to="/" className="text-decoration-none text-white" >
-                            <img src="./logo2.png" alt="logo" height="85px" />
+                            <img src="./logo2.png" alt="work - time management logo" height="70px" />
                         </Link>
                     </div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarToggle">
+                    <div className="ml-auto collapse navbar-collapse" id="navbarToggle">
                         <ul className="navbar-nav ms-auto d-flex align-items-center">
                             <li className="nav-item">
                                 <Link to="/" className="nav-link">Home</Link>

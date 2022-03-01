@@ -27,6 +27,9 @@ const Home = () => {
 
     return (
         <div className="">
+            <section className='text-center container mt-4'>
+                <h2>Work - Time Management</h2>
+            </section>
             <section className="py-2 bg-white container-fluid">
                 <TimingDisplay totalTime={totalTime} />
             </section>

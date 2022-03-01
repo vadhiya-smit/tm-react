@@ -113,7 +113,7 @@ const AddInOut = ({totalTime, setTotalTime}) => {
    
 
     return (
-        <div className="d-flex justify-content-evenly h-100">
+        <div className="d-flex justify-content-evenly ">
             <button className={`btn btn-success w-25 ${isOutTimeNull && "disabled"}`}  data-bs-toggle="modal" data-bs-target="#InModal" onClick={handleBtnClick}>
                 In
             </button>

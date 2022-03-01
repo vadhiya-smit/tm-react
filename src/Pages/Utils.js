@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 
-//const isCallTrue = true
-const isCallTrue = false
-
+const isCallTrue = true
+//const isCallTrue = false
+const mainUrl = "http://localhost:1337"
 const Utils = () => {
 
     const [data, setData] = useState([])
@@ -11,9 +11,11 @@ const Utils = () => {
     const updateById = async (id) => {
         var arr = []
         const newItem = {...data.find(item => item.id === id)}
-        const url = `http://52.66.238.175:1337/pages/${id}`
-        const isDataExist = newItem.GenericSection.find(item => item.__component === "hierarchical.title-content-with-title-content-list")
-        if(!isDataExist){
+        //const url = `${mainUrl}/pages/${id}`
+        const url = `${mainUrl}/api/temps/${id}`
+        //const isDataExist = newItem.GenericSection.find(item => item.__component === "hierarchical.title-content-with-title-content-list")
+        //if (!isDataExist) {
+        if(true){
             const additionalData2 = [
                 {
                     "__component": "hierarchical.title-content-with-title-content-list",
@@ -140,24 +142,31 @@ const Utils = () => {
                     "Image" : 2503
                 }
             ]
-            newItem.GenericSection = [...newItem.GenericSection,...additionalData2]
+            //newItem.GenericSection = [...newItem.GenericSection,...additionalData2]
+            
+            var obj = newItem.attributes
+            obj.title2 = "newTitle"
+            console.log(obj);
             if(isCallTrue){
-                const res = await axios.put(url,newItem)
+                //return new Promise()
+                const res = await axios.put(url,{data : obj})
                 const finalUpdatedData = await res.data
                 console.log("updated final : ",finalUpdatedData);
-
+                return finalUpdatedData
             } else {
                 console.log("isCalltrue is false");
             }
         } else {
             console.log(`data is already available in this page ,  PageId : ${id}`);
         }
+        // return Promise(async (resolve) => {
+        // })
     }
 
     const handleClick = async (id) => {
         var arr = []
         const item1 = data.find(item => item.id === id)
-        const url = `http://52.66.238.175:1337/pages/${id}`
+        const url = `${mainUrl}/pages/${id}`
         // const res = await axios.get(url)
         // const data1 = await res.data
         // console.log(data1);
@@ -423,7 +432,7 @@ const Utils = () => {
     }
 
     const deleteById =async (id) => {
-        const url = `http://52.66.238.175:1337/pages/${id}`
+        const url = `${mainUrl}/pages/${id}`
 
         const data1 = {...data.find(item => item.id === id)}
         const updatedGenericSection = data1.GenericSection.filter(item => item.__component !== "hierarchical.title-content-with-title-content-list" && item.__component !== "standard.title-content-media-single")
@@ -439,21 +448,34 @@ const Utils = () => {
     useEffect(() => {
         async function getdata(){
             ///blog/net-core-vs-java
-            // const url = "http://52.66.238.175:1337/pages?[URL_contains]=/blog/&_limit=-1"
-            // const url = "http://52.66.238.175:1337/pages?[URL_contains]=/current-openings"
-            const url = "http://52.66.238.175:1337/pages?[URL_contains]=/blog/10&_limit=-1"
+            // const url = "${mainUrl}/pages?[URL_contains]=/blog/&_limit=-1"
+            // const url = "${mainUrl}/pages?[URL_contains]=/current-openings"
+            //const url = `${mainUrl}/pages?[URL_contains]=/blog/10&_limit=-1`
+            const url = `${mainUrl}/api/temps`
             const res = await axios.get(url)
-            const data1 = await res.data 
-            console.log("Total data : ",data1.length);
-            setData([...data1])
+            const data1 = await res.data
+            console.log("Total data : ",data1.data.length);
+            setData([...data1.data])
         }
         getdata()
     }, [])
 
-    const updateAll = () => {
-        data.map(async item => {
-            await updateById(item.id)
-        })
+    const updateAll = async () => {
+        var i = 0
+        while(i < data.length){
+            const val = await updateById(data[i].id)
+            console.log(val);
+            i++
+        }
+        for(var i of data){
+            
+        }
+        var temp 
+        // data.map(async item => {
+        //     const val = await updateById(item.id)
+        //     console.log(val);
+            
+        // })
     }
 
     const deleteAll = () => {
@@ -471,14 +493,13 @@ const Utils = () => {
                 <button className="btn btn-danger mx-2" onClick={() => {deleteAll()}}>delete from all</button>
             </div>
             <ul>
+                {data.map(item =><li key={item.id}>
+                    {item.attributes.title}<br/>
+                    {item.attributes.title2}
+                    
+                        <button className="btn btn-success mx-2" onClick={() => {updateById(item.id)}}>update</button>
 
-
-                {data.map(item =>     <li key={item.id}>
-                        {item.Title}
-
-                            <button className="btn btn-success mx-2" onClick={() => {updateById(item.id)}}>update</button>
-
-                            <button className="btn btn-danger mx-2" onClick={() => {deleteById(item.id)}}>delete</button>
+                        <button className="btn btn-danger mx-2" onClick={() => {deleteById(item.id)}}>delete</button>
                     </li>
                 )}
             </ul>
